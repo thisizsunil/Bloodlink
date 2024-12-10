@@ -20,16 +20,109 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController userPhone = TextEditingController();
   TextEditingController userCity = TextEditingController();
   TextEditingController userPassword = TextEditingController();
+
+  String? selectedBloodGroup;
+  String? selectedDistrict;
+
+  final List<String> bloodGroups = [
+    'A+',
+    'A-',
+    'B+',
+    'B-',
+    'O+',
+    'O-',
+    'AB+',
+    'AB-',
+  ];
+
+  final List<String> districts = [
+    'Achham',
+    'Arghakhanchi',
+    'Baglung',
+    'Baitadi',
+    'Bajhang',
+    'Bajura',
+    'Banke',
+    'Bara',
+    'Bardiya',
+    'Bhaktapur',
+    'Bhojpur',
+    'Chitwan',
+    'Dadeldhura',
+    'Dailekh',
+    'Dang',
+    'Darchula',
+    'Dhading',
+    'Dhankuta',
+    'Dhanusha',
+    'Dolakha',
+    'Dolpa',
+    'Doti',
+    'Gorkha',
+    'Gulmi',
+    'Humla',
+    'Ilam',
+    'Jajarkot',
+    'Jhapa',
+    'Jumla',
+    'Kailali',
+    'Kalikot',
+    'Kanchanpur',
+    'Kapilvastu',
+    'Kaski',
+    'Kathmandu',
+    'Kavrepalanchok',
+    'Khotang',
+    'Lalitpur',
+    'Lamjung',
+    'Mahottari',
+    'Makwanpur',
+    'Manang',
+    'Morang',
+    'Mugu',
+    'Mustang',
+    'Myagdi',
+    'Nawalparasi',
+    'Nuwakot',
+    'Okhaldhunga',
+    'Palpa',
+    'Panchthar',
+    'Parbat',
+    'Parsa',
+    'Pyuthan',
+    'Ramechhap',
+    'Rasuwa',
+    'Rautahat',
+    'Rolpa',
+    'Rukum',
+    'Rupandehi',
+    'Salyan',
+    'Sankhuwasabha',
+    'Saptari',
+    'Sarlahi',
+    'Sindhuli',
+    'Sindhupalchok',
+    'Siraha',
+    'Solukhumbu',
+    'Sunsari',
+    'Surkhet',
+    'Syangja',
+    'Tanahun',
+    'Taplejung',
+    'Terhathum',
+    'Udayapur'
+  ];
+
   @override
   Widget build(BuildContext context) {
     return KeyboardVisibilityBuilder(builder: (context, isKeyboardVisible) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: AppConstant.appScendoryCotor,
+          backgroundColor: AppConstant.appScendoryColor,
           centerTitle: true,
           title: Text(
             "Sign Up",
-            style: TextStyle(color: AppConstant.appTextCotor),
+            style: TextStyle(color: AppConstant.appTextColor),
           ),
         ),
         body: SingleChildScrollView(
@@ -40,9 +133,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: Get.height / 20),
                 Container(
                     alignment: Alignment.center,
-                    child: Text("Welcome to my app",
+                    child: Text("Welcome to Blood Link",
                         style: TextStyle(
-                            color: AppConstant.appScendoryCotor,
+                            color: AppConstant.appScendoryColor,
                             fontWeight: FontWeight.bold,
                             fontSize: 16.0))),
                 SizedBox(height: Get.height / 20),
@@ -53,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userEmail,
-                      cursorColor: AppConstant.appScendoryCotor,
+                      cursorColor: AppConstant.appScendoryColor,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           hintText: "Email",
@@ -71,7 +164,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: username,
-                      cursorColor: AppConstant.appScendoryCotor,
+                      cursorColor: AppConstant.appScendoryColor,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           hintText: "UserName",
@@ -89,7 +182,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userPhone,
-                      cursorColor: AppConstant.appScendoryCotor,
+                      cursorColor: AppConstant.appScendoryColor,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           hintText: "Phone",
@@ -101,17 +194,78 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 Container(
+                  width: 400, 
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  // width: MediaQuery.of(context).size.width,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: DropdownButtonFormField<String>(
+                      value: selectedBloodGroup,
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedBloodGroup = newValue;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Select Blood Group",
+                        prefixIcon: Icon(Icons.bloodtype),
+                        contentPadding: EdgeInsets.only(top: 2.0, left: 8.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      items: bloodGroups.map((group) {
+                        return DropdownMenuItem<String>(
+                          value: group,
+                          child: Text(group),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+
+                  // width: 400, // Set a fixed width for the dropdown box
+                  margin: EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: DropdownButtonFormField<String>(
+                      value: selectedDistrict,
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedDistrict = newValue;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Select District",
+                        prefixIcon: Icon(Icons.location_pin),
+                        contentPadding: EdgeInsets.only(top: 2.0, left: 8.0),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                      ),
+                      items: districts.map((district) {
+                        return DropdownMenuItem<String>(
+                          value: district,
+                          child: Text(district),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+                Container(
                   margin: EdgeInsets.symmetric(horizontal: 5.0),
                   width: Get.width,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       controller: userCity,
-                      cursorColor: AppConstant.appScendoryCotor,
+                      cursorColor: AppConstant.appScendoryColor,
                       keyboardType: TextInputType.streetAddress,
                       decoration: InputDecoration(
                           hintText: "City",
-                          prefixIcon: Icon(Icons.location_pin),
+                          prefixIcon: Icon(Icons.location_city),
                           contentPadding: EdgeInsets.only(top: 2.0, left: 8.0),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10.0))),
@@ -127,7 +281,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         () => TextFormField(
                           obscureText: signUpController.isPasswordVisible.value,
                           controller: userPassword,
-                          cursorColor: AppConstant.appScendoryCotor,
+                          cursorColor: AppConstant.appScendoryColor,
                           keyboardType: TextInputType.visiblePassword,
                           decoration: InputDecoration(
                               hintText: "Password",
@@ -155,12 +309,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     width: Get.width / 2.5,
                     height: Get.height / 18,
                     decoration: BoxDecoration(
-                        color: AppConstant.appScendoryCotor,
+                        color: AppConstant.appScendoryColor,
                         borderRadius: BorderRadius.circular(20.0)),
                     child: TextButton(
                       child: Text(
                         "SIGN UP",
-                        style: TextStyle(color: AppConstant.appTextCotor),
+                        style: TextStyle(color: AppConstant.appTextColor),
                       ),
                       onPressed: () async {
                         String name = username.text.trim();
@@ -179,8 +333,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             "Error",
                             "Please enter all details",
                             snackPosition: SnackPosition.BOTTOM,
-                            backgroundColor: AppConstant.appScendoryCotor,
-                            colorText: AppConstant.appTextCotor,
+                            backgroundColor: AppConstant.appScendoryColor,
+                            colorText: AppConstant.appTextColor,
                           );
                         } else {
                           UserCredential? userCredential =
@@ -191,15 +345,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               "Varification email sent.",
                               "Please check your email.",
                               snackPosition: SnackPosition.BOTTOM,
-                              backgroundColor: AppConstant.appScendoryCotor,
-                              colorText: AppConstant.appTextCotor,
+                              backgroundColor: AppConstant.appScendoryColor,
+                              colorText: AppConstant.appTextColor,
                             );
-                            //  signout  for when user first sign up the user data go to firestore database 
-                             
-                            FirebaseAuth.instance.signOut();
-                            Get.offAll(()=> SignInScreen());
-                            
+                            //  signout  for when user first sign up the user data go to firestore database
 
+                            FirebaseAuth.instance.signOut();
+                            Get.offAll(() => SignInScreen());
                           }
                         }
                       },
@@ -214,14 +366,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text(
                       "Already have an account? ",
-                      style: TextStyle(color: AppConstant.appScendoryCotor),
+                      style: TextStyle(color: AppConstant.appScendoryColor),
                     ),
                     GestureDetector(
                       onTap: () => Get.offAll(() => SignInScreen()),
                       child: Text(
                         " Sign In",
                         style: TextStyle(
-                            color: AppConstant.appScendoryCotor,
+                            color: AppConstant.appScendoryColor,
                             fontWeight: FontWeight.bold),
                       ),
                     ),

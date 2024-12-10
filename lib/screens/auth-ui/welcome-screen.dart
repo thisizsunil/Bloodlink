@@ -21,9 +21,9 @@ class WelcomeScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         elevation: 0,
         centerTitle: true,
-        backgroundColor: AppConstant.appScendoryCotor,
+        backgroundColor: AppConstant.appScendoryColor,
         title: Text("Welcome to Blood Link",
-        style: TextStyle(color: AppConstant.appTextCotor),),
+        style: TextStyle(color: AppConstant.appTextColor),),
       ),
       body: Container(
         child: Column(
@@ -72,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
                 width: Get.width / 1.6,
                 height: Get.height / 12,
                 decoration: BoxDecoration(
-                    color: AppConstant.appScendoryCotor,
+                    color: AppConstant.appScendoryColor,
                     borderRadius: BorderRadius.circular(20.0)),
                 child: TextButton.icon(
                     icon: Image.asset(
@@ -82,7 +82,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     label: Text(
                       "Sign in with email",
-                      style: TextStyle(color: AppConstant.appTextCotor),
+                      style: TextStyle(color: AppConstant.appTextColor),
                     ),
                     onPressed: () {
                       Get.off(()=> SignInScreen());

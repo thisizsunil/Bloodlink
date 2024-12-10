@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, unused_field, avoid_unnecessary_containers, prefer_const_constructors
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:blood_link/controllers/banners-controller.dart';
@@ -13,7 +15,7 @@ class BannerWidget extends StatefulWidget {
 }
 
 class _BannerWidgetState extends State<BannerWidget> {
-  final CarouselController carouselController = CarouselController();
+  // final CarouselController carouselController = CarouselController();
   final bannerController _bannerController = Get.put(bannerController());
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class _BannerWidgetState extends State<BannerWidget> {
                         child: CupertinoActivityIndicator(),
                       ),
                     ),
-                    errorWidget:(context,url,error)=>Icon(Icons.error) ,
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
               )

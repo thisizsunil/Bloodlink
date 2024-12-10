@@ -37,6 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
       final GetUserDataController getUserDataController =
           Get.put(GetUserDataController());
       var userData = await getUserDataController.getUserData(user!.uid);
+
       if (userData[0]['isAdmin'] == true) {
         Get.offAll(() => AdminMainScreen());
       }else{
@@ -54,9 +55,9 @@ class _SplashScreenState extends State<SplashScreen> {
 // final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: AppConstant.appScendoryCotor,
+      backgroundColor: AppConstant.appScendoryColor,
       appBar: AppBar(
-        backgroundColor: AppConstant.appScendoryCotor,
+        backgroundColor: AppConstant.appScendoryColor,
         elevation: 0,
       ),
       body: Container(
@@ -75,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
               alignment: Alignment.center,
               child: Text(AppConstant.appPoweredBy,
                   style: TextStyle(
-                      color: AppConstant.appTextCotor,
+                      color: AppConstant.appTextColor,
                       fontSize: 12.0,
                       fontWeight: FontWeight.bold)),
             ),

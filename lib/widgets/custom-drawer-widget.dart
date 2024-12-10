@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: file_names, prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, no_leading_underscores_for_local_identifiers
 
+import 'package:blood_link/screens/user-panel/all-orders-screen.dart';
 import 'package:blood_link/utils/app-constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topRight: Radius.circular(20.0),
+            bottomRight: Radius.circular(20.0),
           ),
         ),
         child: Wrap(
@@ -35,19 +37,19 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               child: ListTile(
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
-                  "Sunil",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  "Waris",
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
                 subtitle: Text(
                   "Version 1.0.1",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
                 leading: CircleAvatar(
                   radius: 22.0,
-                  backgroundColor: AppConstant.appMainCotor,
+                  backgroundColor: AppConstant.appMainColor,
                   child: Text(
                     "W",
-                    style: TextStyle(color: AppConstant.appTextCotor),
+                    style: TextStyle(color: AppConstant.appTextColor),
                   ),
                 ),
               ),
@@ -59,85 +61,109 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               color: Colors.grey,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Home",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
-                leading: Icon(Icons.home),
-                trailing: Icon(Icons.arrow_forward),
+                leading: Icon(
+                  Icons.home,
+                  color: AppConstant.appTextColor,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: AppConstant.appTextColor,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Products",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
-                leading: Icon(Icons.production_quantity_limits),
-                trailing: Icon(Icons.arrow_forward),
+                leading: Icon(
+                  Icons.production_quantity_limits,
+                  color: AppConstant.appTextColor,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: AppConstant.appTextColor,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Orders",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
-                leading: Icon(Icons.shopping_bag),
-                trailing: Icon(Icons.arrow_forward),
+                leading: Icon(
+                  Icons.shopping_bag,
+                  color: AppConstant.appTextColor,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: AppConstant.appTextColor,
+                ),
+                onTap: () {
+                  Get.back();
+                  Get.to(() => AllOrdersScreen());
+                },
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Contact",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
-                leading: Icon(Icons.help),
-                trailing: Icon(Icons.arrow_forward),
+                leading: Icon(
+                  Icons.help,
+                  color: AppConstant.appTextColor,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: AppConstant.appTextColor,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
-                onTap: ()async{
-                   GoogleSignIn googleSignIn = GoogleSignIn();
-                FirebaseAuth _auth = FirebaseAuth.instance;
-                await _auth.signOut();
-                await googleSignIn.signOut();
-                Get.offAll(() => WelcomeScreen());
+                onTap: () async {
+                  GoogleSignIn googleSignIn = GoogleSignIn();
+                  FirebaseAuth _auth = FirebaseAuth.instance;
+                  await _auth.signOut();
+                  await googleSignIn.signOut();
+                  Get.offAll(() => WelcomeScreen());
                 },
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Logout",
-                  style: TextStyle(color: AppConstant.appTextCotor),
+                  style: TextStyle(color: AppConstant.appTextColor),
                 ),
-                leading: Icon(Icons.logout),
-                trailing: Icon(Icons.arrow_forward),
+                leading: Icon(
+                  Icons.logout,
+                  color: AppConstant.appTextColor,
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward,
+                  color: AppConstant.appTextColor,
+                ),
               ),
             ),
           ],
         ),
-        backgroundColor: AppConstant.appScendoryCotor,
+        backgroundColor: AppConstant.appScendoryColor,
       ),
     );
   }

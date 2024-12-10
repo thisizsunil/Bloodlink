@@ -32,8 +32,8 @@ class SignInController extends GetxController {
         "Error",
         "$e",
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: AppConstant.appScendoryCotor,
-        colorText: AppConstant.appTextCotor,
+        backgroundColor: AppConstant.appScendoryColor,
+        colorText: AppConstant.appTextColor,
       );
     }
   }

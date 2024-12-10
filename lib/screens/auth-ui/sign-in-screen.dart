@@ -32,11 +32,11 @@ class _SignInScreenState extends State<SignInScreen> {
       return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: AppConstant.appScendoryCotor,
+          backgroundColor: AppConstant.appScendoryColor,
           centerTitle: true,
           title: Text(
             "Sign In",
-            style: TextStyle(color: AppConstant.appTextCotor),
+            style: TextStyle(color: AppConstant.appTextColor),
           ),
         ),
         body: Container(
@@ -59,7 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   padding: const EdgeInsets.all(10.0),
                   child: TextFormField(
                     controller: userEmail,
-                    cursorColor: AppConstant.appScendoryCotor,
+                    cursorColor: AppConstant.appScendoryColor,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       hintText: "Email",
@@ -81,7 +81,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       () => TextFormField(
                         controller: userPassword,
                         obscureText: signInController.isPasswordVisible.value,
-                        cursorColor: AppConstant.appScendoryCotor,
+                        cursorColor: AppConstant.appScendoryColor,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           hintText: "Password",
@@ -112,7 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: Text(
                     "Forget Password?",
                     style: TextStyle(
-                        color: AppConstant.appScendoryCotor,
+                        color: AppConstant.appScendoryColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -125,13 +125,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   width: Get.width / 2,
                   height: Get.height / 18,
                   decoration: BoxDecoration(
-                    color: AppConstant.appScendoryCotor,
+                    color: AppConstant.appScendoryColor,
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                   child: TextButton(
                     child: Text(
                       "SIGN IN",
-                      style: TextStyle(color: AppConstant.appTextCotor),
+                      style: TextStyle(color: AppConstant.appTextColor),
                     ),
                     onPressed: () async {
                       String email = userEmail.text.trim();
@@ -142,8 +142,8 @@ class _SignInScreenState extends State<SignInScreen> {
                           "Error",
                           "Please enter all details",
                           snackPosition: SnackPosition.BOTTOM,
-                          backgroundColor: AppConstant.appScendoryCotor,
-                          colorText: AppConstant.appTextCotor,
+                          backgroundColor: AppConstant.appScendoryColor,
+                          colorText: AppConstant.appTextColor,
                         );
                       } else {
                         UserCredential? userCredential = await signInController
@@ -160,8 +160,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 "Success Admin Login",
                                 "login Successfully!",
                                 snackPosition: SnackPosition.BOTTOM,
-                                backgroundColor: AppConstant.appScendoryCotor,
-                                colorText: AppConstant.appTextCotor,
+                                backgroundColor: AppConstant.appScendoryColor,
+                                colorText: AppConstant.appTextColor,
                               );
                               Get.offAll(() => AdminMainScreen());
                             } else {
@@ -170,8 +170,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 "Success User Login",
                                 "login Successfully!",
                                 snackPosition: SnackPosition.BOTTOM,
-                                backgroundColor: AppConstant.appScendoryCotor,
-                                colorText: AppConstant.appTextCotor,
+                                backgroundColor: AppConstant.appScendoryColor,
+                                colorText: AppConstant.appTextColor,
                               );
                             }
                           } else {
@@ -179,8 +179,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               "Error",
                               "Please verify your email before login",
                               snackPosition: SnackPosition.BOTTOM,
-                              backgroundColor: AppConstant.appScendoryCotor,
-                              colorText: AppConstant.appTextCotor,
+                              backgroundColor: AppConstant.appScendoryColor,
+                              colorText: AppConstant.appTextColor,
                             );
                           }
                         } else {
@@ -188,8 +188,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             "Error",
                             "Please try again",
                             snackPosition: SnackPosition.BOTTOM,
-                            backgroundColor: AppConstant.appScendoryCotor,
-                            colorText: AppConstant.appTextCotor,
+                            backgroundColor: AppConstant.appScendoryColor,
+                            colorText: AppConstant.appTextColor,
                           );
                         }
                       }
@@ -205,14 +205,14 @@ class _SignInScreenState extends State<SignInScreen> {
                 children: [
                   Text(
                     "Don't have an account? ",
-                    style: TextStyle(color: AppConstant.appScendoryCotor),
+                    style: TextStyle(color: AppConstant.appScendoryColor),
                   ),
                   GestureDetector(
                     onTap: () => Get.offAll(() => SignUpScreen()),
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
-                          color: AppConstant.appScendoryCotor,
+                          color: AppConstant.appScendoryColor,
                           fontWeight: FontWeight.bold),
                     ),
                   ),

@@ -59,8 +59,8 @@ class SignUpController extends GetxController {
       //print("")
       Get.snackbar("Error", "$e",
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: AppConstant.appScendoryCotor,
-          colorText: AppConstant.appTextCotor
+          backgroundColor: AppConstant.appScendoryColor,
+          colorText: AppConstant.appTextColor
           );
     }
   }
