@@ -86,7 +86,7 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                         child: Container(
                           child: FillImageCard(
                             borderRadius: 20.0,
-                            width: Get.width / 2.3,
+                            width: Get.width / 3.0,
                             heightImage: Get.height / 10,
                             imageProvider: CachedNetworkImageProvider(
                               categoriesModel.categoryImg,
